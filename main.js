@@ -1,5 +1,4 @@
 import { vigenereEncrypt, vigenereDecrypt } from "./scripts/vigenere.js";
-import { playfairEncrypt, playfairDecrypt } from "./scripts/playfair.js";
 import { autoEncryption, autoDecryption } from "./scripts/autokey.js"
 import { encrypt, decrypt } from "./scripts/playfair2.js"
 
