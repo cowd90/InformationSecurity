@@ -1,6 +1,7 @@
 import { vigenereEncrypt, vigenereDecrypt } from "./scripts/vigenere.js";
 import { playfairEncrypt, playfairDecrypt } from "./scripts/playfair.js";
 import { autoEncryption, autoDecryption } from "./scripts/autokey.js"
+import { encrypt, decrypt } from "./scripts/playfair2.js"
 
 // Event handler for the Vigenere Cipher buttons
 document.getElementById("vigenereEncryptBtn").addEventListener("click", () => {
@@ -46,7 +47,7 @@ document.getElementById("playfairEncryptBtn").addEventListener("click", () => {
   const keyword = document
     .getElementById("playfairKeyword")
     .value.toUpperCase();
-  const encryptedText = playfairEncrypt(text, keyword);
+  const encryptedText = encrypt(text, keyword);
   document.getElementById("playfairOutput").value = encryptedText;
 });
 
@@ -55,6 +56,6 @@ document.getElementById("playfairDecryptBtn").addEventListener("click", () => {
   const keyword = document
     .getElementById("playfairKeyword")
     .value.toUpperCase();
-  const decryptedText = playfairDecrypt(text, keyword);
+  const decryptedText = decrypt(text, keyword);
   document.getElementById("playfairOutput").value = decryptedText;
 });
