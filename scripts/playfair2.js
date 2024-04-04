@@ -6,6 +6,30 @@ function getNextCharacter(usedChars) {
     }
     return String.fromCharCode(index);
 }
+
+function cipherTable(key) {
+    // creates a matrix of 5*5
+    const playfairTable = Array.from({ length: 5 }, () => Array(5).fill(''));
+    const keyString = key + 'ABCDEFGHIKLMNOPQRSTUVWXYZ';
+  
+    for (let k = 0; k < keyString.length; k++) {
+      let repeat = false;
+      let used = false;
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          if (playfairTable[i][j] === keyString[k]) {
+            repeat = true;
+          } else if (playfairTable[i][j] === '' && !repeat && !used) {
+            playfairTable[i][j] = keyString[k];
+            used = true;
+          }
+        }
+      }
+    }
+  
+    return playfairTable;
+  }
+
 function getKeyTable(key) {
     key = normaliseKey(key);
     const usedCharacters = ['j'];
@@ -109,6 +133,8 @@ function encrypt(text, key) {
             encryptedText += pair;
         }
     }
+    const tableMatrix = cipherTable(key);
+    console.log(tableMatrix)
     return encryptedText.toUpperCase();
 }
 function decrypt(text, key) {
@@ -138,4 +164,4 @@ function decrypt(text, key) {
     return decryptedText.toUpperCase();
 }
 
-export { encrypt, decrypt };
+export { encrypt, decrypt, cipherTable };

@@ -1,18 +1,32 @@
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-// function main() {
-//     const msg = "ALLWORKANDPLAYMA";
-//     let key = "WHENINRO";
 
-//     if (key.match(/[-+]?\\d*\\.?\\d+/)) {
-//         key = alphabet.charAt(parseInt(key));
-//     }
-
-//     const enc = autoEncryption(msg, key);
-//     console.log("Plaintext : " + msg);
-//     console.log("Encrypted : " + enc);
-//     console.log("Decrypted : " + autoDecryption(enc, key));
-// }
+function createVigenereTable() {
+    // creating 26x26 table containing alphabets
+    const tableArr = Array.from({ length: 26 }, () => new Array(26).fill(0));
+    for (let i = 0; i < 26; i++) {
+      for (let j = 0; j < 26; j++) {
+        let temp;
+        if ((i + 65) + j > 90) {
+          temp = ((i + 65) + j) - 26;
+        } else {
+          temp = (i + 65) + j;
+        }
+        tableArr[i][j] = temp;
+      }
+    }
+  
+    // printing table to check if it's correct
+    for (let i = 0; i < 26; i++) {
+      let row = '';
+      for (let j = 0; j < 26; j++) {
+        row += String.fromCharCode(tableArr[i][j]) + ' ';
+      }
+      console.log(row);
+    }
+  
+    return tableArr;
+  }
 
 function autoEncryption(msg, key) {
     const len = msg.length;
@@ -46,5 +60,5 @@ function autoDecryption(msg, key) {
     return decryptMsg;
 }
 // Exporting the functions
-export { autoEncryption, autoDecryption };
+export { autoEncryption, autoDecryption, createVigenereTable };
 
