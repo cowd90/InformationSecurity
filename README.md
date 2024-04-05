@@ -1,5 +1,5 @@
 Link Demo: https://cowd90.github.io/InformationSecurity/
-Hướng dẫn sử dụng:
+*Hướng dẫn sử dụng:
   + Nhập văn bản và key vào để mã hóa
   + Copy đoạn văn bản đã mã hóa và dán vào input rồi giải mã
   (Lưu ý: Văn bản và Khóa phải là chữ cái)
